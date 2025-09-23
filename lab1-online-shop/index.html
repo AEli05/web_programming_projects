@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <div class="container">
     <meta charset="UTF-8">
     <title>CoffeeSpot</title>
     <link rel="stylesheet" href="styles/style.css">
     <script src="js/settings.js" defer></script>
+    </div>
 </head>
 <body>
+<div class="container">
 <a class="skip-link" href="#catalog">Перейти к каталогу</a>
 <header class="site-header">
 
@@ -17,7 +20,7 @@
         <a href="#contacts">Контакты</a>
     </nav>
 
-    <button class="corsina-button" data-corsina-button aria-label="Открыть корзину">
+    <button class="corsina-button btn btn--primary" data-corsina-button aria-label="Открыть корзину">
         <span class="corsina-obj-count" data-corsina-obj-count aria-live="polite">0</span>
     </button>
 </header>
@@ -35,12 +38,15 @@
         <div class="corsina-list" data-corsina-list></div>
         <div class="summary"></div>
         Итого: <output data-corsina-output>0</output>
-        <button class="button-summary" data-corsina-total>Оформить заказ</button>
+        <button class="button-summary btn btn--primary" data-corsina-total>Оформить заказ</button>
     </aside>
 </main>
 <p>Добро пожаловать в нашу кофейню!</p>
+</div>
 </body>
 <footer class="site-footer">
+    <div class="container">
     <p class="contacts">адрес: г.Санкт-Петербург, ул.Ленина, д.5. Телефон: +79292384425</p>
+    </div>
 </footer>
 </html>
