@@ -19,13 +19,13 @@ body {
 
 h1, h2 {
     margin-top: 0;
-    font-weight: normal;
+    font-weight: bold;
     line-height: 1.2;
 }
 h1 { font-size: 32px; }
 h2 { font-size: 28px; }
 
-p, ul, ol {
+p, ul {
     margin-top: 0;
     margin-bottom: 16px;
 }
@@ -135,7 +135,7 @@ a:focus {
     background: #ffffff;
     padding: 16px;
     border-radius: 15px;
-    border: 1px solid #f9c9fb;
+    border: 1px solid #ffd3b6;
 }
 
 .product-list {
@@ -220,4 +220,31 @@ a:focus {
 }
 .site-footer .contacts {
     margin: 0;
+}
+
+.product-card-image{
+    width: 60%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.product-card-content {
+    align-content: center;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    display: -webkit-box;
+    overflow: hidden;
+
+}
+
+.product-card{
+
+}
+
+.product-card-title{
+    margin: 0;
+    font-weight: bold;
+    font-size: 16px;
 }
