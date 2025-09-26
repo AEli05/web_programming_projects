@@ -1,52 +1,55 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <div class="container">
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>CoffeeSpot</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style.css" />
     <script src="js/settings.js" defer></script>
-    </div>
 </head>
+
 <body>
-<div class="container">
 <a class="skip-link" href="#catalog">Перейти к каталогу</a>
+
 <header class="site-header">
+    <div class="container container-header">
+        <h1 class="site-name">CoffeeSpot</h1>
 
-    <h1 class="site-name">CoffeeSpot</h1>
+        <nav class="site-navigation">
+            <a href="#catalog">Каталог</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
 
-    <nav class="site-navigation">
-        <a href="#catalog">Каталог</a>
-        <a href="#contacts">Контакты</a>
-    </nav>
-
-    <button class="corsina-button btn btn--primary" data-corsina-button aria-label="Открыть корзину">
-        <span class="corsina-obj-count" data-corsina-obj-count aria-live="polite">0</span>
-    </button>
+        <button class="corsina-button btn btn--primary" data-corsina-button aria-label="Открыть корзину">
+            <span class="corsina-obj-count" data-corsina-obj-count aria-live="polite">0</span>
+        </button>
+    </div>
 </header>
 
 <main class="site-main">
-<section id="catalog" class="catalog" aria-labelledby="catalog-title">
-    <h2 id="catalog-name">Каталог</h2>
-    <ul class="product-list" data-product-list role="list">
-        <p>hhhhh</p>
-        <p>ggggg</p>
-    </ul>
-</section>
-    <aside id="corsina" class="corsina" aria-labelledby="corsina-title">
-        <h2 id="corsina-title">Корзина</h2>
-        <div class="corsina-list" data-corsina-list></div>
-        <div class="summary"></div>
-        Итого: <output data-corsina-output>0</output>
-        <button class="button-summary btn btn--primary" data-corsina-total>Оформить заказ</button>
-    </aside>
+    <div class="container container-main">
+        <section id="catalog" class="catalog" aria-labelledby="catalog-title">
+            <h2 id="catalog-title">Каталог</h2>
+            <ul class="product-list" data-product-list role="list">
+                <li>Товар 1</li>
+                <li>Товар 2</li>
+                <li>Товар 3</li>
+            </ul>
+        </section>
+
+        <aside id="corsina" class="corsina" aria-labelledby="corsina-title">
+            <h2 id="corsina-title">Корзина</h2>
+            <div class="corsina-list" data-corsina-list>ppppp</div>
+            <div class="summary"></div>
+            Итого: <output data-corsina-output>0</output>
+            <button class="button-summary btn btn--primary" data-corsina-total>Оформить заказ</button>
+        </aside>
+    </div>
 </main>
-<p>Добро пожаловать в нашу кофейню!</p>
-</div>
-</body>
+
 <footer class="site-footer">
-    <div class="container">
-    <p class="contacts">адрес: г.Санкт-Петербург, ул.Ленина, д.5. Телефон: +79292384425</p>
+    <div class="container container-footer">
+        <p class="contacts">адрес: г.Санкт-Петербург, ул.Ленина, д.5. Телефон: +79292384425</p>
     </div>
 </footer>
+</body>
 </html>

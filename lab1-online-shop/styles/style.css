@@ -2,13 +2,19 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
+    height: 100%;
     margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
     font-family: Arial, system-ui, sans-serif;
     font-size: 16px;
-    background: #FFFFFF;
+    background: #ffffff;
     line-height: 1.5;
-    color: #2B2B2B;
+    color: #2b2b2b;
 }
 
 h1, h2 {
@@ -16,9 +22,8 @@ h1, h2 {
     font-weight: normal;
     line-height: 1.2;
 }
-
-h1 {font-size: 32px; }
-h2 {font-size: 28px; }
+h1 { font-size: 32px; }
+h2 { font-size: 28px; }
 
 p, ul, ol {
     margin-top: 0;
@@ -26,57 +31,193 @@ p, ul, ol {
 }
 
 a {
-    color: #2B2B2B;
+    color: #2b2b2b;
     text-decoration: none;
 }
-
-a:hover, a:focus {
+a:hover,
+a:focus {
     text-decoration: underline;
 }
 
 .container {
     max-width: 1200px;
-    margin-inline: auto;
-    margin-right: auto;
     margin-left: auto;
+    margin-right: auto;
     padding-inline: 16px;
 }
 
 .btn {
-    display: inline-block;
-    allign-items: center;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    padding: .5em 1em;
-    border-radius: 16px;
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: 12px;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     cursor: pointer;
-    transition: background .2s, box-shadow .2s;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.02s;
 }
 
 .btn--primary {
-    background-color: #A8E6CF;
-    color: #2B2B2B;
-    border: 1px solid #A8E6CF;
+    background-color: #daffda;
+    color: #2b2b2b;
+    border: 1px solid #daffda;
 }
-
 .btn--primary:hover {
-    background-color: #81C7B9;
+    background-color: #81c7b9;
+}
+.btn--primary:active {
+    transform: translateY(1px);
 }
 
 .btn--secondary {
-    background-color: #FFD3B6;
-    color: #2B2B2B;
-    border: 1px solid #FFD3B6;
+    background-color: #ffd3b6;
+    color: #2b2b2b;
+    border: 1px solid #ffd3b6;
 }
-
 .btn--secondary:hover {
-    background: #FFAAA5;
-    color: #2B2B2B;
+    background: #ffaaa5;
+    color: #2b2b2b;
 }
 
 .skip-link {
     position: absolute;
     left: -9999px;
     top: -9999px;
+}
+.skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    background: #fff;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+
+
+.site-header {
+    background: #daffda;
+}
+.container-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-block: 14px;
+}
+
+.site-navigation a {
+    margin-right: 1rem;
+}
+.site-navigation a:last-child {
+    margin-right: 0;
+}
+
+.site-main {
+    flex: 1;
+    padding-block: 16px;
+}
+
+.container-main {
+    display: grid;
+    gap: 16px;
+}
+
+@media (min-width: 900px) {
+    .container-main {
+        grid-template-columns: 3fr 1fr;
+        align-items: start;
+    }
+}
+
+.catalog {
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 15px;
+    border: 1px solid #f9c9fb;
+}
+
+.product-list {
+    display: grid;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@media (min-width: 700px) {
+    .product-list {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+    }
+}
+@media (min-width: 1100px) {
+    .product-list {
+        grid-template-columns: repeat(3, minmax(220px, 1fr));
+    }
+}
+
+.corsina {
+    background: #ffffff;
+    border: 1px solid #daffda;
+    border-radius: 15px;
+    padding: 16px;
+}
+@media (min-width: 900px) {
+    .corsina {
+        position: sticky;
+        top: 16px;
+    }
+}
+
+.corsina-list {
+    min-height: 80px;
+    max-height: 300px;
+    overflow: auto;
+    border: 1px dashed #daffda;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 12px;
+}
+
+.summary,
+.button-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.corsina-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.corsina-obj-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    border-radius: 999px;
+    background: #daffda;
+    color: #2b2b2b;
+    font-weight: 700;
+    border: 1px solid rgba(129,199,185,.6);
+}
+
+.site-footer {
+    background: #daffda;
+    text-align: center;
+    padding: 12px 0;
+}
+.container-footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-inline: 16px;
+}
+.site-footer .contacts {
+    margin: 0;
 }
