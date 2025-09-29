@@ -40,13 +40,13 @@
 
             if (!id || !title || !description || !Number.isFinite(price) || amount == null || amount <= 0) return null;
 
-
             const existing = this._items.get(id);
             if (existing) {
                 existing.product_amount += amount;
             } else {
                 this._items.set(id, { id, price, description, title, product_amount: amount });
             }
+            return true;
         }
 
         remove(id){
@@ -112,7 +112,6 @@
 
                 this._items.clear();
                 for (const row of arr){
-                    // row: {id, title, price, description, product_amount}
                     this.add(
                         { productId: row.id, productTitle: row.title, productPrice: row.price, productDescription: row.description },
                         row.product_amount
@@ -127,14 +126,90 @@
 
     }
     window.korzina1 = new Korzina();
+
+    korzina1.load();
+    renderMiniKorz();
+    renderKorzina();
+
 }) ();
 
 function renderMiniKorz(){
-    const mini_cor = document.querySelector('[data-corsina-button]');
-    if (!mini_cor) return;
-    const count = korzina1.count();
-    const total = korzina1.total();
-    mini_cor.innerHTML = `Товаров: ${count}, сумма: ${total} ₽`;
+    const badge = document.querySelector('[data-corsina-obj-count]');
+    if (badge) badge.textContent = String(korzina1.count());
 }
 
 renderMiniKorz();
+
+function renderKorzina(){
+    const listEl = document.querySelector('[data-corsina-list]');
+    const totalEl = document.querySelector('[data-corsina-output]');
+    if (!listEl || !totalEl) return;
+
+    const items = korzina1.list();
+    if (items.length === 0){
+        listEl.innerHTML = '<p style="margin:0">Пусто</p>';
+    } else {
+        listEl.innerHTML = items.map(row => {
+            const subtotal = row.price * row.product_amount;
+            return `
+        <div class="korz-row" data-id="${row.id}">
+          <div class="korz-title">${row.title}</div>
+          <div class="korz-price">${row.price}₽</div>
+          <div class="korz-qty">
+            <button type="button" class="korz-btn korz-minus" aria-label="Уменьшить">−</button>
+            <input class="korz-input" type="number" min="0" step="1" value="${row.product_amount}" inputmode="numeric">
+            <button type="button" class="korz-btn korz-plus" aria-label="Увеличить">+</button>
+          </div>
+          <div class="korz-sub">${subtotal}₽</div>
+          <button type="button" class="korz-del" aria-label="Удалить">×</button>
+        </div>
+      `;
+        }).join('');
+    }
+
+    totalEl.textContent = String(korzina1.total());
+    renderMiniKorz();
+}
+
+document.addEventListener('click', (e) => {
+    const row = e.target.closest('.korz-row');
+    if (!row) return;
+    const id = row.getAttribute('data-id');
+
+    if (e.target.closest('.korz-plus')){
+        const current = korzina1.list().find(i => i.id === id)?.product_amount ?? 0;
+        korzina1.setAmount(id, current + 1);
+        korzina1.save();
+        renderKorzina();
+    }
+
+    if (e.target.closest('.korz-minus')){
+        const current = korzina1.list().find(i => i.id === id)?.product_amount ?? 0;
+        korzina1.setAmount(id, Math.max(0, current - 1));
+        korzina1.save();
+        renderKorzina();
+    }
+
+    if (e.target.closest('.korz-del')){
+        korzina1.remove(id);
+        korzina1.save();
+        renderKorzina();
+    }
+});
+
+
+document.addEventListener('input', (e) => {
+    const input = e.target.closest('.korz-input');
+    if (!input) return;
+    const row = e.target.closest('.korz-row');
+    if (!row) return;
+    const id = row.getAttribute('data-id');
+
+    const val = Number(input.value);
+    if (Number.isFinite(val) && val >= 0){
+        korzina1.setAmount(id, val);
+        korzina1.save();
+        renderKorzina();
+    }
+});
+

@@ -248,3 +248,99 @@ a:focus {
     font-weight: bold;
     font-size: 16px;
 }
+
+.korz-row {
+    display: grid;
+    grid-template-columns: 1fr 70px 120px 80px 36px;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 8px;
+    border-bottom: 1px dashed #e6f7ee;
+}
+
+
+.korz-title{
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.korz-price,
+.korz-sub{
+    text-align: right;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+
+.korz-qty {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.korz-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ccefe5;
+    background: #e8fbf3;
+    border-radius: 8px;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform .02s, background .15s;
+}
+.korz-btn:hover { background:#d6f7ec; }
+.korz-btn:active { transform: translateY(1px); }
+
+.korz-input {
+    width: 50px;
+    height: 32px;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    padding: 0 4px;
+}
+
+/* Крестик удаления */
+.korz-del{
+    min-height: 32px;
+    width: 32px;
+    border-radius: 10px;
+    border: 1px solid #ffd6d6;
+    background: #ffecec;
+    cursor: pointer;
+    font-weight: 700;
+    line-height: 1;
+    transition: transform .02s, background .15s;
+}
+.korz-del:hover{ background:#ffdcdc; }
+.korz-del:active{ transform: translateY(1px); }
+
+
+.korz-input::-webkit-outer-spin-button,
+.korz-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.korz-input[type=number] { -moz-appearance: textfield; }
+
+
+.corsina h2{ margin-bottom: 12px; }
+.corsina-list{
+    background: #fafdfb;
+    border: 1px solid #e6f7ee;
+    border-radius: 12px;
+    padding: 10px;
+}
+.summary{ margin-top: 10px; }
+.button-summary{ margin-top: 8px; }
+
+
+@media (max-width: 520px) {
+    .korz-row {
+        grid-template-columns: 1fr 64px 120px 72px 32px;
+        padding: 8px 6px;
+        font-size: 14px;
+    }
+
+    .korz-btn, .korz-input, .korz-del {
+        min-height: 28px;
+        height: 28px;
+    }
+}}
