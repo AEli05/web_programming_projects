@@ -86,6 +86,41 @@
             for (const i in this._items.values()) total += i.product_amount * i.price;
             return total;
         }
+
+        clear(){
+            this._items.clear();
+        }
+
+        save(){
+            const data = this.list();
+            try{
+                localStorage.setItem(this._storageKey, JSON.stringify(data));
+                return true;
+            } catch(err){
+                console.log(err);
+                return false;
+            }
+        }
+
+        load(){
+            const raw = localStorage.getItem(this._storageKey);
+            if (raw == null) return false;
+
+            const arr = JSON.parse(raw);
+            if (!Array.isArray(arr)) return false;
+
+            this._items.clear();
+            for (const row in arr){
+                this.add(
+                    { id: row.id, title: row.title, price: row.price, description: row.description },
+                    row.product_amount
+                );
+            }
+            return true;
+        } catch (e) {
+            console.warn('Failed:', e);
+            return false;}
+
     }
     window.korzina1 = new Korzina();
 })
