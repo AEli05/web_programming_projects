@@ -70,6 +70,22 @@
             if (!pr) return false;
             pr.product_amount = amt;
         }
+
+        list(){
+            return Array.from(this._items.values()).map(i => ({...i}));
+        }
+
+        count(){
+            let counter = 0;
+            for (const i in this._items.values) counter += i.product_amount;
+            return counter;
+        }
+
+        total(){
+            let total = 0;
+            for (const i in this._items.values()) total += i.product_amount * i.price;
+            return total;
+        }
     }
     window.korzina1 = new Korzina();
 })
