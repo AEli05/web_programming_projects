@@ -13,9 +13,9 @@
             return s.length ? s : null;
         }
 
-        static _toAmt(qte){
-            if (qte == null) return null;
-            const s = Number(qte);
+        static _toAmt(amt){
+            if (amt == null) return null;
+            const s = Number(amt);
             if (s < 0) return null;
             if (!Number.isFinite(s)) return null;
             return s;
@@ -48,6 +48,27 @@
                 this._items.set(id, {id, price, description, title, product_amount: amount});
             }
             return true;
+        }
+
+        remove(id){
+            const key = Korzina._toId(id);
+            if (key === null) return null;
+            this._items.delete(id);
+        }
+
+        setAmount(id, amount){
+            const key = Korzina._toId(id);
+            const amt = Korzina._toAmt(amount);
+            if (!key || !amt) return null;
+
+            if (key === 0) {
+                this._items.delete(key);
+                return true
+            }
+
+            const pr = this._items.get(key);
+            if (!pr) return false;
+            pr.product_amount = amt;
         }
     }
     window.korzina1 = new Korzina();
