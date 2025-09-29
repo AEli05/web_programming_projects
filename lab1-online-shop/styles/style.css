@@ -265,10 +265,11 @@ a:focus {
 }
 
 .korz-price,
-.korz-sub{
+.korz-sub {
     text-align: right;
     white-space: nowrap;
     font-variant-numeric: tabular-nums;
+}
 
 .korz-qty {
     display: flex;
@@ -300,7 +301,6 @@ a:focus {
     padding: 0 4px;
 }
 
-/* Крестик удаления */
 .korz-del{
     min-height: 32px;
     width: 32px;
@@ -343,4 +343,14 @@ a:focus {
         min-height: 28px;
         height: 28px;
     }
-}}
+}
+
+dialog {
+    border: none;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.2);
+}
+dialog::backdrop {
+    background: rgba(0,0,0,.35);
+}

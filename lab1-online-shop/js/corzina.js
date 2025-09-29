@@ -213,3 +213,58 @@ document.addEventListener('input', (e) => {
     }
 });
 
+let orderDialog;
+
+function ensureOrderDialog(){
+    if (orderDialog) return orderDialog;
+    orderDialog = document.createElement('dialog');
+    orderDialog.className = 'order-dialog';
+    orderDialog.innerHTML = `
+    <form class="order-form">
+      <h3 style="margin-top:0">Оформление заказа</h3>
+      <label>Имя<br><input name="firstName" required></label><br><br>
+      <label>Фамилия<br><input name="lastName" required></label><br><br>
+      <label>Адрес доставки<br><input name="address" required></label><br><br>
+      <label>Телефон<br><input name="phone" required pattern="\\+?\\d[\\d\\s\\-\\(\\)]{5,}"></label><br><br>
+
+      <div style="display:flex; gap:8px; justify-content:flex-end">
+        <button type="button" class="btn btn--secondary order-cancel">Отмена</button>
+        <button type="submit" class="btn btn--primary">Создать заказ</button>
+      </div>
+    </form>
+  `;
+    document.body.appendChild(orderDialog);
+
+
+    orderDialog.querySelector('.order-cancel')
+        .addEventListener('click', () => orderDialog.close());
+
+
+    orderDialog.querySelector('form')
+        .addEventListener('submit', (e) => {
+            e.preventDefault();
+            const form = e.target;
+            if (!form.reportValidity()) return;
+
+            if (korzina1.count() === 0){
+                alert('Корзина пуста :(');
+                orderDialog.close();
+                return;
+            }
+
+            alert('Заказ создан!');
+            korzina1.clear();
+            korzina1.save();
+            renderKorzina();
+            orderDialog.close();
+        });
+
+    return orderDialog;
+}
+
+
+document.querySelector('[data-corsina-total]')?.addEventListener('click', () => {
+    ensureOrderDialog().showModal();
+});
+
+
