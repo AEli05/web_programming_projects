@@ -1,7 +1,7 @@
 (function () {
     const STORAGE_KEY = 'coffespot_korzina_v1';
 
-    class korzina {
+    class Korzina {
         constructor(storageKey = STORAGE_KEY) {
             this._storageKey = storageKey;
             this._items = new Map();
@@ -13,7 +13,7 @@
             return s.length ? s : null;
         }
 
-        static _toQte(qte){
+        static _toAmt(qte){
             if (qte == null) return null;
             const s = Number(qte);
             if (s < 0) return null;
@@ -29,24 +29,26 @@
             return s;
         }
 
-        add(product, qte){
+        add(product, amt=1){
             if (!product || typeof product !== 'object' ) return null;
 
-            const id = korzina._toId(product.id);
-            const price = korzina._toPrice(product.price);
-            const description = product.description;
-            const title = product.title;
-            const amt = korzina._toQte(qte);
+            const id = Korzina._toId(product.productId);
+            const price = Korzina._toPrice(product.productPrice);
+            const description = product.productDescription;
+            const title = product.productTitle;
+            const amount = Korzina._toAmt(amt);
 
-            if (!id || !title || !amt || !description || !title || !price) return null;
+            if (!id || !title || !amt || !description || !title || !price || amount === 0) return null;
 
             const existing = this._items.get(id);
 
             if (existing) {
-                existing.qty += q
+                existing.product_amount += amt;
+            } else {
+                this._items.set(id, {id, price, description, title, product_amount: amount});
             }
+            return true;
         }
-
-        window.korzina1 = new korzina();
     }
+    window.korzina1 = new Korzina();
 })
