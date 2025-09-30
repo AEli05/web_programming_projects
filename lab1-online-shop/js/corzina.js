@@ -224,7 +224,7 @@ function ensureOrderDialog(){
       <h3 style="margin-top:0">Оформление заказа</h3>
       <label>Имя<br><input name="firstName" placeholder="Anastasia" required></label><br><br>
       <label>Фамилия<br><input name="lastName" placeholder="Elizarova" required></label><br><br>
-      <label>Адрес доставки<br><input name="address" placeholder="abc@gmail.com" required></label><br><br>
+      <label>Адрес доставки<br><input name="address" placeholder="ул. Ленина, д.6, кв.1" required></label><br><br>
       <label>Телефон<br><input name="phone" type="tel" placeholder="+7 999 123 45 67" required pattern="\\+?\\d[\\d\\s\\-\\(\\)]{5,}"></label>
 
       <div style="display:flex; gap:8px; justify-content:flex-end">
