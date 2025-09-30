@@ -222,10 +222,10 @@ function ensureOrderDialog(){
     orderDialog.innerHTML = `
     <form class="order-form">
       <h3 style="margin-top:0">Оформление заказа</h3>
-      <label>Имя<br><input name="firstName" required></label><br><br>
-      <label>Фамилия<br><input name="lastName" required></label><br><br>
-      <label>Адрес доставки<br><input name="address" required></label><br><br>
-      <label>Телефон<br><input name="phone" required pattern="\\+?\\d[\\d\\s\\-\\(\\)]{5,}"></label><br><br>
+      <label>Имя<br><input name="firstName" placeholder="Anastasia" required></label><br><br>
+      <label>Фамилия<br><input name="lastName" placeholder="Elizarova" required></label><br><br>
+      <label>Адрес доставки<br><input name="address" placeholder="abc@gmail.com" required></label><br><br>
+      <label>Телефон<br><input name="phone" type="tel" placeholder="+7 999 123 45 67" required pattern="\\+?\\d[\\d\\s\\-\\(\\)]{5,}"></label>
 
       <div style="display:flex; gap:8px; justify-content:flex-end">
         <button type="button" class="btn btn--secondary order-cancel">Отмена</button>

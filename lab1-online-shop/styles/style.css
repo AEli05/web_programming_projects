@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -102,16 +106,44 @@ a:focus {
 .container-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 16px;
-    padding-block: 14px;
+}
+
+.site-name {
+    margin: 0;
+}
+
+
+.site-navigation {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex: 1;
 }
 
 .site-navigation a {
-    margin-right: 1rem;
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-weight: 600;
+    color: #2b2b2b;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: all 0.2s;
 }
-.site-navigation a:last-child {
-    margin-right: 0;
+.site-navigation a:hover {
+    background: #d0f6ea;
+    border-color: #81c7b9;
+}
+
+@media (max-width: 520px) {
+    .site-navigation {
+        gap: 8px;
+    }
+    .site-navigation a {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
 }
 
 .site-main {
@@ -200,26 +232,38 @@ a:focus {
     justify-content: center;
     min-width: 2rem;
     height: 2rem;
-    padding: 0 0.5rem;
+    padding: 0 0.6rem;
     border-radius: 999px;
-    background: #daffda;
+
+    background: #b4eadc;
     color: #2b2b2b;
     font-weight: 700;
-    border: 1px solid rgba(129,199,185,.6);
+    font-size: 15px;
+    line-height: 1;
+
+    border: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,.1);
+    transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.corsina-button:hover .corsina-obj-count {
+    background: #81c7b9;
+    color: #fff;
+    transform: scale(1.05);
 }
 
 .site-footer {
     background: #daffda;
     text-align: center;
     padding: 12px 0;
+    font-size: 14px;
+    color: #2b2b2b;
+    border-top: 1px solid #b4eadc;
 }
-.container-footer {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-inline: 16px;
-}
+
 .site-footer .contacts {
     margin: 0;
+    line-height: 1.4;
 }
 
 .product-card-image{
