@@ -332,7 +332,7 @@ a:focus {
     cursor: pointer;
     transition: transform .02s, background .15s;
 }
-.korz-btn:hover { background:#d6f7ec; }
+.korz-btn:hover { background: #d7f8ed; }
 .korz-btn:active { transform: translateY(1px); }
 
 .korz-input {

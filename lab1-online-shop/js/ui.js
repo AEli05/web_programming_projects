@@ -22,6 +22,6 @@ document.addEventListener('click', (e) => {
         renderMiniKorz();
         renderKorzina();
     } else {
-        alert('Не удалось добавить продукт :(');
+        alert('Не удалось добавить продукт :( !');
     }
 });
